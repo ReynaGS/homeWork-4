@@ -1,35 +1,130 @@
-var secondsLeft = 15;
+// Set up Global Variables, to be used later in the code.
+var secondsLeft = 0;
+var startQuizBtn;
+var sectionOne;
+var questionOneDiv;
+var questionTwoDiv;
+var questionThreeDiv;
+var questionFourDiv;
+var questionFiveDiv;
+var lastDiv;
+var resultsDiv;
+var score = 0;
+var timerInterval;
 
+// Display Timer Value
 function printer(message) {
   var timeLeftButton = document.getElementById('timeleft');
   timeLeftButton.innerText = message;
 }
+// Display Score
 
+function scoreTrack(message) {
+  var spanScore = document.querySelector('#displayHighscore');
+  spanScore.innerText = 'Your Final Score Is ' + message;
+}
+
+// Timer Function
 function setTime() {
-  var timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     console.log('done' + secondsLeft);
     secondsLeft--;
     printer('Time ' + secondsLeft);
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       clearInterval(timerInterval);
+      secondsLeft = 0;
+      printer('Time ' + secondsLeft);
+      moveToEnd();
     }
   }, 1000);
 }
 
-setTime();
+function startQuiz(event) {
+  sectionOne.hidden = true;
+  questionOneDiv.hidden = false;
+  secondsLeft = 20;
+  setTime();
+  // Assigning event to button 1
+  var questionOne = document.querySelector('#b1q1');
+  questionOne.addEventListener('click', function () {
+    secondsLeft = secondsLeft - 10;
+    moveToQ2();
+    // decrementar el tiempo 10 segundos
+  });
+  // Assigning event to button 2
 
-//  define dependencies
+  var questionTwo = document.querySelector('#b2q1');
+  questionTwo.addEventListener('click', function () {
+    secondsLeft = secondsLeft - 10;
+    moveToQ2();
+  });
 
-//     var score = 0 ;
-//     function for time;
-//     function for total score
-//
-//
+  // Assigning event to button 3
 
-//  TO START THE GAME
+  var questionThree = document.querySelector('#b3q1');
+  questionThree.addEventListener('click', function () {
+    score = score + 20;
+    moveToQ2();
+  });
+}
+function moveToQ2() {
+  questionOneDiv.hidden = true;
+  questionTwoDiv.hidden = false;
 
-//       Ask user:  "would like to take HTML Quizz now?;
-//    -window.confirm("Would you like to take the quizz now?");-
+  // Assigning event to button 1
+  var questionOne = document.querySelector('#b1q2');
+  questionOne.addEventListener('click', function () {
+    score = score + 20;
+    moveToQ3();
+  });
+  // Assigning event to button 2
+
+  var questionTwo = document.querySelector('#b2q2');
+  questionTwo.addEventListener('click', function () {
+    secondsLeft = secondsLeft - 10;
+    moveToQ3();
+  });
+
+  // Assigning event to button 3
+
+  var questionThree = document.querySelector('#b3q2');
+  questionThree.addEventListener('click', function () {
+    secondsLeft = secondsLeft - 10;
+    moveToQ3();
+    // incrementar el score
+  });
+}
+function moveToQ3() {
+  questionTwoDiv.hidden = true;
+  questionThreeDiv.hidden = true; //***change to false - delete comment.**
+  moveToEnd();
+}
+
+function moveToEnd() {
+  questionOneDiv.hidden = true;
+  questionTwoDiv.hidden = true;
+  questionThreeDiv.hidden = true;
+  questionFourDiv.hidden = true;
+  questionFiveDiv.hidden = true;
+  lastDiv.hidden = false;
+  resultsDiv.hidden = true;
+  clearInterval(timerInterval);
+  scoreTrack(score);
+}
+// Function to load content inside after Dom is completed loaded.
+window.onload = main;
+function main() {
+  startQuizBtn = document.querySelector('#startquiz');
+  startQuizBtn.addEventListener('click', startQuiz);
+  sectionOne = document.querySelector('#quizzStarter');
+  questionOneDiv = document.querySelector('#question1');
+  questionTwoDiv = document.querySelector('#question2');
+  questionThreeDiv = document.querySelector('#question3');
+  questionFourDiv = document.querySelector('#question4');
+  questionFiveDiv = document.querySelector('#question5');
+  lastDiv = document.querySelector('#lastDiv');
+  resultsDiv = document.querySelector('#resultsDiv');
+}
 
 //   if user confirms,
 
@@ -61,7 +156,7 @@ setTime();
 //           - var q2B = "HyperTex Main Lenguage";
 //           - var q3C = "Hypertext Markup Language";
 
-//       If questionOne === q3C,true, ++score, else ?};
+//       If questionOne === q3C,true, ++score, else - 10 seconds time ?};
 
 //     2- var questionTwo = "How is an HTML Element define?";
 

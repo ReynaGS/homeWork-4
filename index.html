@@ -15,9 +15,15 @@
   </head>
 
   <body>
-    <button type="button" class="btn btn-lg btn-primary" disabled>
+    <button
+      type="button"
+      class="btn btn-lg btn-primary"
+      id="viewHighscore"
+      enable
+    >
       View HighScores
     </button>
+
     <button
       type="button"
       class="btn btn-secondary btn-lg"
@@ -26,42 +32,147 @@
     >
       Time Left : 15 Secs
     </button>
-    <div class="container"></div>
-    <p></p>
-//  "What does HTML Stand for?" ;
-      1-"HeyTypeMe";
-//          "HyperTex Main Lenguage";
-//          "Hypertext Markup Language";
+    <div class="container" id="quizzStarter">
+      <h1>Coding Quizz Challenge</h1>
+      <p>
+        Try to answer the following HTML related questions within the time
+        limit. Keep in mind that wrong answers will penalize your time by 10
+        seconds
+      </p>
+      <button type="button" class="btn btn-success" id="startquiz">
+        Start Quizz
+      </button>
+    </div>
+    <div class="container" id="question1" hidden>
+      <p>1- What does HTML Stand for?</p>
+      <ol>
+        <li>
+          <button type="button" class="btn btn-secondary" id="b1q1">
+            HeyTypeMe
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary" id="b2q1">
+            HyperTex Main Lenguage
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary" id="b3q1">
+            Hypertext Markup Language
+          </button>
+        </li>
+      </ol>
+    </div>
+    <div class="container" id="question2" hidden>
+      <p>2- How is an HTML Element define?</p>
+      <ol>
+        <li>
+          <button type="button" class="btn btn-secondary" id="b1q2">
+            &lttag name &gt Content &lt/tagname &gt
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary" id="b2q2">
+            tagname=value
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary" id="b3q2">
+            &lttagtagname/content&gt
+          </button>
+        </li>
+      </ol>
+    </div>
+    <div class="container" id="question3" hidden>
+      <p>3- How are HTML headings define??</p>
+      <ol>
+        <li>
+          <button type="button" class="btn btn-secondary">
+            &lttag h1 &gt to &lttag h6 &gt
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary">
+            &lt p1 &gt to &lt p6 &gt
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary">
+            &lthead &gt &lt/head &gt
+          </button>
+        </li>
+      </ol>
+    </div>
+    <div class="container" id="question4" hidden>
+      <p>4- What defines the body of a HTML document?</p>
+      <ol>
+        <li>
+          <button type="button" class="btn btn-secondary">
+            &lt body &gt &lt/ body &gt
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary">
+            &lt html &gt &lt/ html &gt
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary">
+            &lt html &gt &lt/ html &gt
+          </button>
+        </li>
+      </ol>
+    </div>
+    <div class="container" id="question5" hidden>
+      <p>5- A paragraph always starts on a new line?</p>
+      <ol>
+        <li>
+          <button type="button" class="btn btn-secondary">True</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-secondary">false</button>
+        </li>
+      </ol>
+    </div>
 
-//       If questionOne === q3C,true, ++score, else ?};
+    <div class="container" id="lastDiv" hidden>
+      <h2>!!All Done!!</h2>
 
-//     2- var questionTwo = "How is an HTML Element define?";
+      <p id="displayHighscore">Your Final Score Is</p>
 
-//           -var q2A = "<tagname> Content </tagname>";
-//           -var q2B = "tagname = value";
-//           -var q2c = "<tagname /content>";
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label for="staticEmail2" class="sr-only">Enter Initials</label>
+          <input
+            type="text"
+            readonly
+            class="form-control-plaintext"
+            id=""
+            value="Enter Initials"
+          />
+        </div>
 
-//       If questionTwo === q2A,true, ++score, else ?};
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">initials</label>
+          <input
+            type="initials"
+            class="form-control"
+            id="inputinitials"
+            placeholder="initials"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </form>
+    </div>
 
-//     3- var questionThree = "How are HTML headings define?";
+    <div class="container" id="resultsDiv" hidden>
+      <h1>Highscore</h1>
+      <div class="alert alert-primary" role="alert">
+        Aqui se muestran Initials + Highscore
+      </div>
 
-//           - var q3A = "<h1> to <h6>";
-//           - var q3B = "<p1> to <p6>";
-//           - var q3C = "<head> </head>";
-
-//     If questionThree === q3A,true, ++score, else ?};
-
-//     4- var questionFour = "What defines de body of a HTML document?"
-//          - var q4A = "<body>";
-//          - var q4B = "<html>";
-//          - var q4C = "<head>";
-
-//     If questionFour === q4A,true, ++score, else ?};
-
-//     5-  var questionFive = "A paragraph always starts on a new line?:;
-//         - var q5A = "True";
-//         - var q5B = "False";
-//     If questionFive === q5A,true, ++score, else ?}; -->
-
+      <button type="button" class="btn btn-primary">Go Back!</button>
+      <button type="button" class="btn btn-secondary">Clear Highscore</button>
+    </div>
   </body>
 </html>
