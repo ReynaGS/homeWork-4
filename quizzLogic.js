@@ -49,7 +49,7 @@ function startQuiz(event) {
   questionOne.addEventListener('click', function () {
     secondsLeft = secondsLeft - 10;
     moveToQ2();
-    // decrementar el tiempo 10 segundos
+    // decrement time by 10 sec
   });
   // Assigning event to button 2
 
@@ -94,11 +94,34 @@ function moveToQ2() {
     // incrementar el score
   });
 }
+
 function moveToQ3() {
   questionTwoDiv.hidden = true;
-  questionThreeDiv.hidden = true; //***change to false - delete comment.**
-  moveToEnd();
+  questionThreeDiv.hidden = false;
+
+  var questionOne = document.querySelector('#b1q3');
+  questionOne.addEventListener('click', function () {
+    score = score + 20;
+    moveToQ4();
+  });
+  // Assigning event to button 2
+
+  var questionTwo = document.querySelector('#b2q3');
+  questionTwo.addEventListener('click', function () {
+    secondsLeft = secondsLeft - 10;
+    moveToQ4();
+  });
+
+  // Assigning event to button 3
+
+  var questionThree = document.querySelector('#b3q3');
+  questionThree.addEventListener('click', function () {
+    secondsLeft = secondsLeft - 10;
+    moveToQ4();
+    // incrementar el score
+  });
 }
+function moveToQ4() {}
 
 function moveToEnd() {
   questionOneDiv.hidden = true;
@@ -125,8 +148,6 @@ function main() {
   lastDiv = document.querySelector('#lastDiv');
   resultsDiv = document.querySelector('#resultsDiv');
 }
-
-//   if user confirms,
 
 //        then  start Var = timeLeft, and
 //        procceed to display var questionOne ,
